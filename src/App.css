@@ -515,6 +515,95 @@ textarea:focus {
   width: auto;
 }
 
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.8rem;
+}
+
+.heatmap__cell {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.heatmap__cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.06);
+}
+
+.heatmap__cell--ok {
+  background: linear-gradient(160deg, rgba(71, 193, 168, 0.15), #ffffff);
+}
+
+.heatmap__cell--watch {
+  background: linear-gradient(160deg, rgba(255, 195, 113, 0.2), #ffffff);
+}
+
+.heatmap__cell--critical {
+  background: linear-gradient(160deg, rgba(215, 38, 61, 0.18), #ffffff);
+}
+
+.heatmap__type {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.heatmap__numbers {
+  margin: 0.25rem 0 0.15rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.heatmap__shortage {
+  margin: 0;
+  color: var(--muted);
+}
+
+.shortage-graph {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.shortage-row {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.shortage-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shortage-bar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--panel-muted);
+  overflow: hidden;
+}
+
+.shortage-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #d7263d, #f57364);
+  transition: width 0.2s ease;
+}
+
+.shortage-bar--ok .shortage-bar__fill {
+  background: linear-gradient(120deg, #47c1a8, #8dd9c6);
+}
+
+.shortage-bar--watch .shortage-bar__fill {
+  background: linear-gradient(120deg, #ffc371, #ffb347);
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

@@ -15,11 +15,10 @@ const Navbar = () => {
   const loggedIn = Boolean(session);
   const isHospital = session?.role === 'Hospital';
   const isIndividual = session?.role === 'Individual donor';
-  const donateHref = loggedIn && isIndividual ? '/#donate' : '/login';
-  const receiveHref = loggedIn && !isIndividual ? '/#request' : '/login';
-  const requestHref = receiveHref;
+  const donateHref = loggedIn && isIndividual ? '/donate' : '/login';
+  const receiveHref = loggedIn && isHospital ? '/hospital' : '/login';
   const showDonateLink = !isHospital;
-  const showReceiveLink = !isIndividual;
+  const showReceiveLink = isHospital;
 
   return (
     <header className="navbar">
@@ -29,7 +28,7 @@ const Navbar = () => {
           <span className="navbar__pill">Trusted</span>
         </div>
         <nav className="navbar__links" aria-label="Primary">
-          <a href="/#home" className="navbar__link">
+          <a href="/" className="navbar__link">
             Home
           </a>
           {showDonateLink && (
@@ -42,9 +41,6 @@ const Navbar = () => {
               Receive
             </a>
           )}
-          <a href="/#inventory" className="navbar__link">
-            Inventory
-          </a>
           <a href="/about" className="navbar__link">
             About
           </a>
